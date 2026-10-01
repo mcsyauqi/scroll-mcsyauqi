@@ -10,9 +10,9 @@ Jalur aset: Higgsfield belum login + berbayar, gemini-web 429 se-IP, chatgpt-web
 - [x] Anchor still pagi.png (dicek visual, lolos)
 - [x] 20 still sisanya (tools/gen-images.mjs, log work/logs/gen-images.log) - finale menyusul
 - [x] QA visual still (sheet1/sheet2: kohesif, tanpa teks)
-- [ ] 21 klip Veo image-to-video (start frame = still) - tools/video-run.mjs di project Flow 83122f37, 20 kredit/klip, saldo 880 sebelum batch
-- [ ] Encode -g 4 crf 21 720p + poster dari klip + still webp
-- [ ] build.mjs -> site/index.html (SEO block, tema gelap brand mcsyauqi)
+- [x] 21 klip Veo image-to-video (start frame = still), Flow project 83122f37, kredit 880 -> 480
+- [x] Encode -g 4 crf 21 720p + poster dari klip + still webp
+- [x] build.mjs -> site/index.html (SEO block, tema gelap brand mcsyauqi)
 - [x] Repo github.com/mcsyauqi/scroll-mcsyauqi (master) + Coolify app ae9utmbde8kwrmxwfbd6zvjl (dockerfile nginx), deploy pertama finished, TLS valid
-- [ ] Verifikasi live: 200 + TLS, grep judul, Playwright screenshot per section, console bersih, seekable blob
-- [ ] Memory + laporan
+- [x] Verifikasi live: 200 + TLS, 64/64 aset, 21/21 klip scrub desktop + mobile, 0 error, reduced-motion OK (fix: patch engine AbortError + strip Alt-Svc h3)
+- [x] Memory + laporan

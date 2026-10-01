@@ -9,6 +9,7 @@ const mobile = +w < 600;
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 const ctx = await browser.newContext({ viewport: { width: +w, height: +h }, isMobile: mobile, hasTouch: mobile, deviceScaleFactor: 1 });
 const page = await ctx.newPage();
+await page.addInitScript(() => { const o = HTMLMediaElement.prototype.play; HTMLMediaElement.prototype.play = function () { const p = o.call(this); p.catch(e => console.error('PLAYREJECT ' + e.name + ' ' + e.message)); return p; }; });
 const errs = [];
 page.on('console', m => { if (m.type() === 'error') errs.push(m.text()); });
 page.on('pageerror', e => errs.push(String(e)));
