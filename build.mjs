@@ -73,6 +73,7 @@ writeFileSync('site/index.html', `<!doctype html>
   <meta property="og:description" content="${esc(desc)}" />
   <meta property="og:image" content="${SITE}assets/og.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230F1B3D'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%2331DDB0'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -94,9 +95,19 @@ writeFileSync('site/index.html', `<!doctype html>
     .sw-btn--ghost { color: var(--sw-ink); }
     .sw-route { gap: 10px; }
     .sw-route__label { background: color-mix(in srgb, #0F1B3D 88%, transparent); color: var(--sw-ink); }
+    /* desktop: push the dioramas right so the copy column sits on open navy, not on the island */
+    @media (min-width: 1024px) { .sw-scene { transform: translateX(9vw); } }
+    /* mid-dive the clip fills the frame: a deeper navy scrim keeps the copy column readable */
+    @media (min-width: 861px) {
+      .sw-copylayer::before { width: min(64vw, 920px); background: linear-gradient(90deg, var(--sw-bg) 0%, color-mix(in srgb, var(--sw-bg) 92%, transparent) 38%, color-mix(in srgb, var(--sw-bg) 55%, transparent) 66%, transparent 100%); }
+    }
+    .sw-copy__title { text-shadow: 0 2px 24px rgba(8, 14, 36, .85); }
+    .sw-copy__body { text-shadow: 0 1px 14px rgba(8, 14, 36, .95); }
     .ai-note { position: fixed; left: clamp(18px, 5vw, 64px); bottom: 18px; z-index: 45; font: 500 .72rem/1.3 'Rethink Sans', system-ui, sans-serif; color: var(--sw-ink-soft); opacity: .8; }
     @media (max-width: 860px) {
       .sw-route { gap: 4px; }
+      .sw-copy { right: 44px; }              /* keep text clear of the route rail */
+      .sw-hint { display: none; }            /* collided with tags + AI note; scrolling is self-evident on touch */
       .ai-note { left: 50%; transform: translateX(-50%); bottom: 6px; white-space: nowrap; }
     }
     @media (hover: none) and (pointer: coarse) { .sw-route__dot { width: 18px; height: 18px; } }
