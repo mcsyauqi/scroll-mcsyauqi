@@ -1,0 +1,1 @@
+export default async ({ page }) => { await page.keyboard.press('Escape'); await page.waitForTimeout(800); const t = (await page.evaluate(() => document.body.innerText)).replace(/\s+/g, ' '); console.log(t.slice(t.indexOf('Collapse'), t.indexOf('Collapse') + 200)); };
