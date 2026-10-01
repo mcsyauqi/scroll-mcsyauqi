@@ -3,13 +3,12 @@
 // work/raw/<id>.mp4    (Flow Veo 3.1 Fast)    -> site/assets/vid/<id>.mp4 (+ poster = its own first frame)
 import { readFileSync, writeFileSync, existsSync, copyFileSync, mkdirSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import os from 'node:os';
 
 const S = JSON.parse(readFileSync('scenes.json', 'utf8'));
 const SITE = 'https://scroll.mcsyauqi.com/';
 const ff = (...a) => execFileSync('ffmpeg', ['-v', 'error', '-y', ...a], { stdio: 'inherit' });
 mkdirSync('site/assets/vid', { recursive: true });
-copyFileSync(os.homedir() + '/.claude/skills/scroll-world/references/scrub-engine.js', 'site/scrub-engine.js');
+copyFileSync('scrub-engine.js', 'site/scrub-engine.js');   // project copy of the skill engine (one local patch, see primeVideo)
 
 const sections = [];
 for (const [i, s] of S.sections.entries()) {
